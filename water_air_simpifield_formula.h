@@ -70,7 +70,7 @@ void setup_parameters_water(double TCelsius, double Salinity, double Depth, doub
   water_setup = true;
 }
 
-void setup_parameters_air(double Pressure, double TCelsius, double Humidity)
+void setup_parameters_air(double TCelsius, double Humidity, double Pressure)
 {
   double PPascal = Pressure * Patm;
   double TKelvin = TCelsius + T01;
@@ -81,7 +81,7 @@ void setup_parameters_air(double Pressure, double TCelsius, double Humidity)
   double fO = FrO(hvalue,PPascal);
   double fC = 1; //fC does not appear in the formulas, but can be understood as cC -> cC/fC^2, for symmetry reasons
   
-  double pars[NParsa]= {Pressure,TCelsius,Humidity};
+  double pars[NParsa]= {TCelsius,Humidity,Pressure};
   
   double cN = 2*NFuncAir(&fN,&pars[0]); //cN=2*NFunc(fN), as then f^2/(f^2+fN^2) = 1/2
   double cO = 2*OFuncAir(&fO,&pars[0]); //cO=2*OFunc(fO), as then f^2/(f^2+fO^2) = 1/2
@@ -121,8 +121,8 @@ void setup_parameters_air(double Pressure, double TCelsius, double Humidity)
   n4a = 1.7413*n4a;
   //n5a is not relevant for the interval [20 Hz, 20 kHz], so no correction is introduced for it
   
-  double a1temp = 1.96005E-05*exp(-0.0159*TCelsius)*pow(Humidity,-0.4);
-  a1a = -0.83774*a1temp + 7.52E+05*a1temp*a1temp + 2.35E+10*a1temp*a1temp*a1temp;
+  double a1tempa = 1.96005E-05*exp(-0.0159*TCelsius)*pow(Humidity,-0.4);
+  a1a = -0.83774*a1tempa + 7.52E+05*a1tempa*a1tempa + 2.35E+10*a1tempa*a1tempa*a1tempa;
   
   //Formulas for the constant prefactors ensuring continuity
   a2a = a1a*pow(flim1a,n1a-n2a);
@@ -153,11 +153,11 @@ double water_absorption(const double *x, const double *pars)
 double air_absorption(const double *x, const double *pars)
 {
   double f = x[0]; //in Hz
-  double Pressure = pars[0];
-  double TCelsius = pars[1];
-  double Humidity = pars[2];
+  double TCelsius = pars[0];
+  double Humidity = pars[1];
+  double Pressure = pars[2];
   
-  if(!air_setup) setup_parameters_air(Pressure, TCelsius, Humidity);
+  if(!air_setup) setup_parameters_air(TCelsius, Humidity, Pressure);
   
   if(f<flim1a)      return a1a*pow(f,n1a);
   else if(f<flim2a) return a2a*pow(f,n2a);

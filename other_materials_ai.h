@@ -407,11 +407,11 @@ const char *materialnames[NMAT] =
 "Water surface, ie swimming pool",
 "Ventilation grille per m2"};
 
-double frequenciesOtherMat = {125,250,500,1000,2000,4000};
+double frequenciesOtherMat[NAI] = {125,250,500,1000,2000,4000};
 
 double AlphaOtherMaterial(const double *x, const double *par)
 {
-  int nmat = atoi(par[0]);
+  int nmat = int(par[0]);
   if(nmat<0 || nmat>=NAI) return -9999;
   double f = x[0];
   
@@ -423,7 +423,7 @@ double AlphaOtherMaterial(const double *x, const double *par)
       break;
     }
   if(range==-1) range=NAI; //this means f larger than largest frequency point
-  if(range>NAI-2) range=NAI-1 //last range is from 2000
+  if(range>NAI-2) range=NAI-1; //last range is from 2000
     
   double n = log(aivalues[nmat][range+1]/aivalues[nmat][range]) / log(frequenciesOtherMat[range+1]/frequenciesOtherMat[range]);
   double c = aivalues[nmat][range]/pow(frequenciesOtherMat[range],n);

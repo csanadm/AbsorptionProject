@@ -7,6 +7,7 @@
 #include "TLatex.h"
 #include "TStyle.h"
 #include "water_air_simpifield_formula.h"
+#include "other_materials_ai.h"
 
 using namespace std;
 
@@ -46,7 +47,7 @@ int main()
   
   double TCelsiusWater = 8;
   double Salinity = 35;
-  double Depth    = 50;
+  double Depth    = 500;
   double pH       = 8;
   frame->SetTitle(Form("#alpha versus f for T=%.0f C, S = %.0f ppt, D = %.0f m, pH = %.0f",TCelsiusWater,Salinity,Depth,pH));
   frame->GetYaxis()->SetTitle("#alpha [dB/km]");
@@ -54,7 +55,7 @@ int main()
   frame->SetMaximum(10);
   frame->Draw();
   TF1* water_absorption_orig = new TF1("water_absorption_orig",AFuncWater,frmin,frmax,NParsw);
-  water_absorption_orig->SetParameters(TCelsiusWater,Humidity,Pressure);
+  water_absorption_orig->SetParameters(TCelsiusWater,Salinity,Depth,pH);
   water_absorption_orig->SetLineColor(8);
   water_absorption_orig->SetLineWidth(2);
   water_absorption_orig->Draw("SAME");
@@ -67,6 +68,22 @@ int main()
   c->SetLogy(1);
   c->Modified();
   c->Print(Form("water_approximation_T%.0f_S%.0f_D%.0f_pH%.0f.png",TCelsiusWater,Salinity,Depth,pH));
+  
+  int nmat = 5;
+  frame->SetTitle(Form("#alpha versus f for %s",materialnames[nmat]));
+  frame->GetYaxis()->SetTitle("#alpha for full width");
+  frame->SetMinimum(0.00001);
+  frame->SetMaximum(10);
+  frame->Draw();
+  TF1* othermat_absorption_func = new TF1("othermat_absorption_func",AlphaOtherMaterial,frmin,frmax,1); 
+  othermat_absorption_func->SetParameter(0,nmat);
+  othermat_absorption_func->SetLineColor(2);
+  othermat_absorption_func->SetLineStyle(7);
+  othermat_absorption_func->Draw("SAME");
+  c->SetLogx(1);
+  c->SetLogy(1);
+  c->Modified();
+  c->Print(Form("othermat_approximation_nmat%d.png",nmat));
   
   delete frame;
   delete water_absorption_func;
