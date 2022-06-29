@@ -1,5 +1,5 @@
 # AbsorptionProject
-Calculating sound absorption in air, water and various other materials
+Calculating sound absorption in air, water and various other materials. It requires gcc (tested with 5.4), GNU Make (tested with 4.1), ROOT (tested with 6.15), the latter also including the Minuit2 component (for the fitting).
 
 ## Description
 This project is based on sound absorption formulas. For the case of air, it is based on:
@@ -17,9 +17,11 @@ It consists of codes of two kind:
 
 ## File content
 - `README.md`: This README file
-- `Makefile`: Using make `<basename>.exe`, it will create an executable (with gcc, working at least from gcc 5.4) from any `<basename>.cc`
+- `Makefile`: Using make `<basename>.exe`, it will create an executable from any `<basename>.cc`
 - `base_formulas_original.h`: This contains all basic formulas from the original papers
 - `air_absorption_4component_fitter.cc`: Fitting the original air absorption formulas with a simplified, piecewise formula, with 4 components
 - `air_absorption_5component_fitter.cc`: Fitting the original air absorption formulas with a simplified, piecewise formula, with 5 components
 - `water_absorption_general.cc`: Fitting the original water absorption formulas with a simplified, piecewise formula, with 3 components
+- `water_air_simpifield_formula.h`: Calculation of the piecewise simple formula for water and air
 - `other_materials_ai.h`: Calculation of the piecewise simple formula for other (construction-related) materials
+- `plot_simple_example.cc`: Creating example plots using the simplified formulas
