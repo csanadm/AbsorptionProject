@@ -423,9 +423,10 @@ double AlphaOtherMaterial(const double *x, const double *par)
       break;
     }
   if(range==-1) range=NAI; //this means f larger than largest frequency point
+  if(range==0) range=1; //first range is up to 250
   if(range>NAI-2) range=NAI-1; //last range is from 2000
     
-  double n = log(aivalues[nmat][range+1]/aivalues[nmat][range]) / log(frequenciesOtherMat[range+1]/frequenciesOtherMat[range]);
+  double n = log(aivalues[nmat][range]/aivalues[nmat][range-1]) / log(frequenciesOtherMat[range]/frequenciesOtherMat[range-1]);
   double c = aivalues[nmat][range]/pow(frequenciesOtherMat[range],n);
   
   return c*pow(f,n);

@@ -6,6 +6,7 @@
 #include "TFitResult.h"
 #include "TLatex.h"
 #include "TStyle.h"
+#include "TGraph.h"
 #include "water_air_simpifield_formula.h"
 #include "other_materials_ai.h"
 
@@ -69,12 +70,16 @@ int main()
   c->Modified();
   c->Print(Form("water_approximation_T%.0f_S%.0f_D%.0f_pH%.0f.png",TCelsiusWater,Salinity,Depth,pH));
   
-  int nmat = 5;
+  int nmat = 5; //"Smooth brickwork with flush pointing"
   frame->SetTitle(Form("#alpha versus f for %s",materialnames[nmat]));
-  frame->GetYaxis()->SetTitle("#alpha for full width");
-  frame->SetMinimum(0.00001);
-  frame->SetMaximum(10);
+  frame->GetYaxis()->SetTitle("#alpha for full material width");
+  TGraph* othermat_data = new TGraph(NAI,frequenciesOtherMat,aivalues[nmat]);
+  frame->SetMinimum(0.002);
+  frame->SetMaximum(2);
   frame->Draw();
+  othermat_data->SetMarkerStyle(20);
+  othermat_data->SetMarkerSize(1);
+  othermat_data->Draw("P");
   TF1* othermat_absorption_func = new TF1("othermat_absorption_func",AlphaOtherMaterial,frmin,frmax,1); 
   othermat_absorption_func->SetParameter(0,nmat);
   othermat_absorption_func->SetLineColor(2);
