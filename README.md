@@ -18,7 +18,7 @@ It consists of codes of two kind:
 
 ## File content
 - `README.md`: This README file
-- `Makefile`: Using make `<basename>.exe`, it will create an executable from any `<basename>.cc`
+- `Makefile`: Using `make <basename>.exe`, it will create an executable from any `<basename>.cc`
 - `base_formulas_original.h`: This contains all basic formulas from the original papers
 - `air_absorption_4component_fitter.cc`: Fitting the original air absorption formulas with a simplified, piecewise formula, with 4 components
 - `air_absorption_5component_fitter.cc`: Fitting the original air absorption formulas with a simplified, piecewise formula, with 5 components
