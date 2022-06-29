@@ -30,6 +30,6 @@ It consists of codes of two kind:
 - `othermat_approximation_nmat5.png`: Example plot for a construction material
 
 ## Example plots as results
-![air_approximation_T20_H30_P1](https://user-images.githubusercontent.com/38218165/176395940-dab9d8be-c048-4e18-9d11-c1f9f550754b.png)
-![othermat_approximation_nmat5](https://user-images.githubusercontent.com/38218165/176395944-b58e091a-008f-42cd-982a-72d576504a59.png)
-![water_approximation_T8_S35_D500_pH8](https://user-images.githubusercontent.com/38218165/176395949-d7313fea-6fef-4019-bde3-64d96b9587ab.png)
+![air_approximation_T20_H30_P1](https://user-images.githubusercontent.com/38218165/176395940-dab9d8be-c048-4e18-9d11-c1f9f550754b.png|width=300)
+![water_approximation_T8_S35_D500_pH8](https://user-images.githubusercontent.com/38218165/176395949-d7313fea-6fef-4019-bde3-64d96b9587ab.png|width=300)
+![othermat_approximation_nmat5](https://user-images.githubusercontent.com/38218165/176506240-391cf60d-4407-462d-8d44-5e1257e6a594.png|width=300)
