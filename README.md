@@ -29,7 +29,7 @@ It consists of codes of two kind:
 - `air_approximation_T20_H30_P1.png`: Example plot for air, made via `plot_simple_example.exe`, solid green line is the original formula, dashed red is the approximation
 - `water_approximation_T8_S35_D500_pH8.png`: Example plot for water, made via `plot_simple_example.exe`, solid green line is the original formula, dashed red is the approximation
 - `othermat_approximation_nmat5.png`: Example plot for a construction material, made via `plot_simple_example.exe`, black circles are the original data points, dashed red is the approximation
-- `plot_simple_example_noroot.cc`: Printing out (via `stdout`) original and simpified results for air, water and a constricution material as example, without ROOT
+- `plot_simple_example_noroot.cc`: Printing out (via `stdout`) original and simpified results for air, water and a constricution material as example, without ROOT; can then be plotted with one's favourite plotter (Gnuplot, Python, etc)
 - `plot_simple_example_noroot.out`: Example output from `plot_simple_example_noroot.exe`
 
 ## Example plots as results
