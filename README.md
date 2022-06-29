@@ -9,6 +9,7 @@ For water, it is based on:
 - Francois & Garrison, [J.Acoust.Soc.Am., 72(3), 896](https://asa.scitation.org/doi/10.1121/1.388170) and [J.Acoust.Soc.Am., 72(6), 1879](https://asa.scitation.org/doi/10.1121/1.388673), both 1982.
 - Fisher & Simmons, [J.Acoust.Soc.Am., 62, 558, 1977](https://asa.scitation.org/doi/10.1121/1.381574).
 - Ainslie & McColm, [J.Acoust.Soc.Am., 103(3), 1671, 1998](https://asa.scitation.org/doi/10.1121/1.421258).
+
 For other, construction related materials, it is based on [measurements](https://www.acoustic.ua/st/web_absorption_data_eng.pdf) of a Kiev-based company Acoustic Trafic.
 
 It consists of codes of two kind:
