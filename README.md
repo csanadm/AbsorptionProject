@@ -25,3 +25,11 @@ It consists of codes of two kind:
 - `water_air_simpifield_formula.h`: Calculation of the piecewise simple formula for water and air
 - `other_materials_ai.h`: Calculation of the piecewise simple formula for other (construction-related) materials
 - `plot_simple_example.cc`: Creating example plots using the simplified formulas
+- `air_approximation_T20_H30_P1.png`: Example plot for air
+- `water_approximation_T8_S35_D500_pH8.png`: Example plot for water
+- `othermat_approximation_nmat5.png`: Example plot for a construction material
+
+## Example plots as results
+![air_approximation_T20_H30_P1](https://user-images.githubusercontent.com/38218165/176395940-dab9d8be-c048-4e18-9d11-c1f9f550754b.png)
+![othermat_approximation_nmat5](https://user-images.githubusercontent.com/38218165/176395944-b58e091a-008f-42cd-982a-72d576504a59.png)
+![water_approximation_T8_S35_D500_pH8](https://user-images.githubusercontent.com/38218165/176395949-d7313fea-6fef-4019-bde3-64d96b9587ab.png)
