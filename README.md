@@ -30,6 +30,14 @@ It consists of codes of two kind:
 - `othermat_approximation_nmat5.png`: Example plot for a construction material
 
 ## Example plots as results
-![air_approximation_T20_H30_P1](https://user-images.githubusercontent.com/38218165/176395940-dab9d8be-c048-4e18-9d11-c1f9f550754b.png|width=300)
-![water_approximation_T8_S35_D500_pH8](https://user-images.githubusercontent.com/38218165/176395949-d7313fea-6fef-4019-bde3-64d96b9587ab.png|width=300)
-![othermat_approximation_nmat5](https://user-images.githubusercontent.com/38218165/176506240-391cf60d-4407-462d-8d44-5e1257e6a594.png|width=300)
+<a href="https://user-images.githubusercontent.com/38218165/176507425-b759cf40-c91b-4240-a446-2cc494a157e8.png">
+  <img alt="Air approximation, T=20, H=30, P=1"
+    src="https://user-images.githubusercontent.com/38218165/176507425-b759cf40-c91b-4240-a446-2cc494a157e8.png" width="300px"></a>
+<a href="https://user-images.githubusercontent.com/38218165/176507432-d0384b13-8baf-402c-8a26-4693a1dc7250.png">
+  <img alt="Water approximation, T=8, S=35, D=500, pH=8"
+    src="https://user-images.githubusercontent.com/38218165/176507432-d0384b13-8baf-402c-8a26-4693a1dc7250.png" width="300px">
+</a>
+<a href="https://user-images.githubusercontent.com/38218165/176507433-b36b1322-05da-4e93-8072-164c1932d61d.png">
+  <img alt="Other materials, smooth brickwork with flush pointing"
+    src="https://user-images.githubusercontent.com/38218165/176507433-b36b1322-05da-4e93-8072-164c1932d61d.png" width="300px">
+</a>
