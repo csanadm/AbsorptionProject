@@ -5,15 +5,15 @@ const double T01 = 273.16;    //triple point temperature
 const double KelvinConversion = 273.15;
 
 //classical absorption
-double classical(double T, double f)
+double classical(double TKelvin, double f)
 {
-  return 868.6*1.84e-11*pow(T/T0,1./2.)*f*f;
+  return 868.6*1.84e-11*pow(TKelvin/T0,1./2.)*f*f;
 }
 
 //Nitrogen relaxation frequency
-double FrN(double T, double h, double P)
+double FrN(double TKelvin, double h, double P)
 { 
-  return P/Patm*(9 + 280*h*exp(-4.17*(pow(T/T0,-1./3.) - 1)))*pow(T/T0,-1./2.);
+  return P/Patm*(9 + 280*h*exp(-4.17*(pow(TKelvin/T0,-1./3.) - 1)))*pow(TKelvin/T0,-1./2.);
 }
 
 //Oxygen relaxation frequency
@@ -23,35 +23,35 @@ double FrO(double h, double P)
 }
 
 //Water vapour saturation pressure
-double psat(double T)
+double psat(double TKelvin)
 {
-  return Patm*pow(10,-6.8346*pow(T01/T,1.261) + 4.6151);
+  return Patm*pow(10,-6.8346*pow(T01/TKelvin,1.261) + 4.6151);
 }
 
 //Absolute humidity
-double habs(double hrel, double T, double P)
+double habs(double hrel, double TKelvin, double P)
 {
-  return hrel*psat(T)/P;
+  return hrel*psat(TKelvin)/P;
 }
 
 //Nitrogen absorption
-double Nit(double T, double h, double P, double f)
+double Nit(double TKelvin, double h, double P, double f)
 {
-  double frn = FrN(T,h,P);
-  return  868.6*0.1068*exp(-3352/T)*pow(T/T0,-5./2.)*frn * f*f/(frn*frn + f*f);
+  double frn = FrN(TKelvin,h,P);
+  return  868.6*0.1068*exp(-3352./TKelvin)*pow(TKelvin/T0,-5./2.)*frn * f*f/(frn*frn + f*f);
 }
 
 //Oxygen absorption
-double Oxyg(double T, double h, double P, double f)
+double Oxyg(double TKelvin, double h, double P, double f)
 {
   double  fro = FrO(h,P);
-  return  868.6*0.01275*exp(-2239.1/T)*pow(T/T0,-5./2.)*fro * f*f/(fro*fro+f*f);
+  return  868.6*0.01275*exp(-2239.1/TKelvin)*pow(TKelvin/T0,-5./2.)*fro * f*f/(fro*fro+f*f);
 }
 
 /* //Total air absorption, this function is not needed actually
-double AlphaAir(double T, double h, double P, double f)
+double AlphaAir(double TKelvin, double h, double P, double f)
 {
-  return classical(T,f) + Nit(T,h,P,f) + Oxyg(T,h,P,f);
+  return classical(TKelvin,f) + Nit(TKelvin,h,P,f) + Oxyg(TKelvin,h,P,f);
 }
 */
 
