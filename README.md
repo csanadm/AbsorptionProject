@@ -17,20 +17,21 @@ It consists of codes of two kind:
 - using the simple formulas
 
 ## File content
-- `README.md`: This README file
-- `Makefile`: Using `make <basename>.exe`, it will create an executable from any `<basename>.cc`
-- `base_formulas_original.h`: This contains all basic formulas from the original papers
-- `air_absorption_4component_fitter.cc`: Fitting the original air absorption formulas with a simplified, piecewise formula, with 4 components
-- `air_absorption_5component_fitter.cc`: Fitting the original air absorption formulas with a simplified, piecewise formula, with 5 components
-- `water_absorption_general.cc`: Fitting the original water absorption formulas with a simplified, piecewise formula, with 3 components
-- `water_air_simpifield_formula.h`: Calculation of the piecewise simple formula for water and air
-- `other_materials_ai.h`: Calculation of the piecewise simple formula for other (construction-related) materials
-- `plot_simple_example.cc`: Creating example plots using the simplified formulas
-- `air_approximation_T20_H30_P1.png`: Example plot for air, made via `plot_simple_example.exe`, solid green line is the original formula, dashed red is the approximation
-- `water_approximation_T8_S35_D500_pH8.png`: Example plot for water, made via `plot_simple_example.exe`, solid green line is the original formula, dashed red is the approximation
-- `othermat_approximation_nmat5.png`: Example plot for a construction material, made via `plot_simple_example.exe`, black circles are the original data points, dashed red is the approximation
-- `plot_simple_example_noroot.cc`: Printing out (via `stdout`) original and simpified results for air, water and a constricution material as example, without ROOT; can then be plotted with one's favourite plotter (Gnuplot, Python, etc)
-- `plot_simple_example_noroot.out`: Example output from `plot_simple_example_noroot.exe`
+- **README.md**: This README file
+- **Makefile**: Using `make <basename>.exe`, it will create an executable from any `<basename>.cc`
+- **base_formulas_original.h**: This contains all basic formulas from the original papers
+- **air_absorption_4component_fitter.cc**: Fitting the original air absorption formulas with a simplified, piecewise formula, with 4 components
+- **air_absorption_5component_fitter.cc**: Fitting the original air absorption formulas with a simplified, piecewise formula, with 5 components
+- **water_absorption_general.cc**: Fitting the original water absorption formulas with a simplified, piecewise formula, with 3 components
+- **water_air_simpifield_formula.h**: Calculation of the piecewise simple formula for water and air
+- **other_materials_ai.h**: Calculation of the piecewise simple formula for other (construction-related) materials
+- **plot_simple_example.cc**: Creating example plots using the simplified formulas
+- **air_approximation_T20_H30_P1.png**: Example plot for air, created via `plot_simple_example.exe`, solid green line is the original formula, dashed red is the approximation
+- **water_approximation_T8_S35_D500_pH8.png**: Example plot for water, created via `plot_simple_example.exe`, solid green line is the original formula, dashed red is the approximation
+- **othermat_approximation_nmat5.png*: Example plot for a construction material, created via `plot_simple_example.exe`, black circles are the original data points, dashed red is the approximation
+- **plot_simple_example_noroot.cc**: Printing out (via `stdout`) original and simpified results for air, water and a constricution material as example, without ROOT; can then be plotted with one's favourite plotter (Gnuplot, Python, etc)
+- **plot_simple_example_noroot.out**: Example output created via `plot_simple_example_noroot.exe`
+- **nonroot_calculations_plotted.xlsx**: Excel visualization of the output **plot_simple_example_noroot.out** 
 
 ## Example plots as results
 <a href="https://user-images.githubusercontent.com/38218165/176507425-b759cf40-c91b-4240-a446-2cc494a157e8.png">
