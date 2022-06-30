@@ -31,6 +31,9 @@ It consists of codes of two kind:
 - [**plot_simple_example_noroot.cc**](https://github.com/csanadm/AbsorptionProject/blob/main/plot_simple_example_noroot.cc): Printing out (via `stdout`) original and simpified results for air, water and a constricution material as example, without ROOT; can then be plotted with one's favourite plotter (Gnuplot, Python, etc)
 - [**plot_simple_example_noroot.out**](https://github.com/csanadm/AbsorptionProject/blob/main/plot_simple_example_noroot.out): Example output created via `plot_simple_example_noroot.exe`
 - [**nonroot_calculations_plotted.xlsx**](https://github.com/csanadm/AbsorptionProject/blob/main/nonroot_calculations_plotted.xlsx): Excel visualization of the output **plot_simple_example_noroot.out** 
+- [**absorption_project.ipynb**](https://github.com/csanadm/AbsorptionProject/blob/main/absorption_project.ipynb): Python calculations of water and air absorption as a Jupyter notebook 
+- [**absorption_project.html**](https://github.com/csanadm/AbsorptionProject/blob/main/absorption_project.html): HTML version of **absorption_project.ipynb**
+- [**absorption_project.py**](https://github.com/csanadm/AbsorptionProject/blob/main/absorption_project.html): Python executable script version of **absorption_project.ipynb**
 
 ## Example plots as results
 <a href="https://user-images.githubusercontent.com/38218165/176507425-b759cf40-c91b-4240-a446-2cc494a157e8.png">
