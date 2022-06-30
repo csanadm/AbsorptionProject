@@ -16,6 +16,7 @@ double a1a, a2a, a3a, a4a, a5a;
 const int NParsa = 3;
 bool air_setup = false;
 
+//Setup parameters for water formula
 void setup_parameters_water(double TCelsius, double Salinity, double Depth, double pH)
 {
   //Basic parameters for the first estimate
@@ -70,11 +71,12 @@ void setup_parameters_water(double TCelsius, double Salinity, double Depth, doub
   water_setup = true;
 }
 
+//Setup parameters for air formula
 void setup_parameters_air(double TCelsius, double Humidity, double Pressure)
 {
   double PPascal = Pressure * Patm;
   double TKelvin = TCelsius + T01;
-  double hvalue = h(Humidity,TKelvin,PPascal);
+  double hvalue = habs(Humidity,TKelvin,PPascal);
   
   //Basic parameters for the first estimate
   double fN = FrN(TKelvin,hvalue,PPascal);
@@ -133,6 +135,7 @@ void setup_parameters_air(double TCelsius, double Humidity, double Pressure)
   air_setup = true;
 }
 
+//Water absorption, double*,double* type of function, to be usable in ROOT as well
 double water_absorption(const double *x, const double *pars)
 {
   double f = x[0]; //in Hz
@@ -150,6 +153,7 @@ double water_absorption(const double *x, const double *pars)
   else              return a5w*pow(f,n5w);
 }
 
+//Air absorption, double*,double* type of function, to be usable in ROOT as well
 double air_absorption(const double *x, const double *pars)
 {
   double f = x[0]; //in Hz

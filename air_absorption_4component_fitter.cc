@@ -81,7 +81,7 @@ int main(int argc, char *argv[])
   
   double PPascal = Pressure * Patm;
   double TKelvin = TCelsius + T01;
-  double hvalue = h(Humidity,TKelvin,PPascal);
+  double hvalue = habs(Humidity,TKelvin,PPascal);
   double fN = FrN(TKelvin,hvalue,PPascal);
   double fO = FrO(hvalue,PPascal);
   double fC = 1; //fC does not appear in the formulas, but can be understood as cC -> cC/fC^2, for symmetry reasons

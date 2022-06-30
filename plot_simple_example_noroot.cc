@@ -13,10 +13,12 @@ double df = log(frmax/frmin)/Nf;        //frequency step inverse exponent
 
 int main()
 {
+  //Parameter array for double*,double* functions
   double *airpars = new double[3];
   airpars[0] = 20; //TCelsiusAir;
   airpars[1] = 30; //Humidity
   airpars[2] = 1;  //Pressure
+  //Printing results
   cout << "Printing air absorption, original and simplified formula" << endl;
   for(int ifr=0;ifr<Nf;ifr++)
   {
@@ -26,11 +28,13 @@ int main()
   cout << endl;
   delete airpars;
   
+  //Parameter array for double*,double* functions
   double *waterpars = new double[4];
   waterpars[0] = 8;   //TCelsiusWater;
   waterpars[1] = 35;  //Salinity
   waterpars[2] = 500; //Depth
   waterpars[3] = 8;   //pH
+  //Printing results
   cout << "Printing water absorption, original and simplified formula" << endl;
   for(int ifr=0;ifr<Nf;ifr++)
   {
@@ -40,7 +44,9 @@ int main()
   cout << endl;
   delete waterpars;
   
+  //Chosing a material
   double nmat = 5; //"Smooth brickwork with flush pointing"
+  //Printing results
   cout << "Printing " << materialnames[(int)floor(nmat)] << " absorption data, original data" << endl;
   for(int ifr=0;ifr<NAI;ifr++)
   {
