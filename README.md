@@ -34,6 +34,8 @@ It consists of codes of two kind:
 - [**absorption_project.ipynb**](https://github.com/csanadm/AbsorptionProject/blob/main/absorption_project.ipynb): Python calculations of water and air absorption as a Jupyter notebook 
 - [**absorption_project.html**](https://github.com/csanadm/AbsorptionProject/blob/main/absorption_project.html): HTML version of **absorption_project.ipynb**
 - [**absorption_project.py**](https://github.com/csanadm/AbsorptionProject/blob/main/absorption_project.html): Python executable script version of **absorption_project.ipynb**
+- [**other_materials_ai.txt**](https://github.com/csanadm/AbsorptionProject/blob/main/other_materials_ai.txt): Other material absorption data to be imported in **absorption_project.ipynb**
+- [**other_materials_names.txt**](https://github.com/csanadm/AbsorptionProject/blob/main/other_materials_names.txt): Other material names to be imported in **absorption_project.ipynb**
 
 ## Example plots as results
 <a href="https://user-images.githubusercontent.com/38218165/176507425-b759cf40-c91b-4240-a446-2cc494a157e8.png">
