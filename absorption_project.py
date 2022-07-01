@@ -3,21 +3,46 @@
 
 # # Absorption project
 
-# ## Basic parameters and python libraries
+# ## Basic parameters, data and python libraries
 
-# In[102]:
+# In[1]:
 
 
 import math
+import matplotlib.pyplot as plt
+import numpy as np
+
+
+# In[2]:
+
+
 T0 = 293.15;     #temperature scale for the calibrated functions
 Patm = 101325.0; #atmospheric pressure
 T01 = 273.16;    #triple point temperature
 KelvinConversion = 273.15;
 
 
+# In[3]:
+
+
+other_materials_ai = np.loadtxt("other_materials_ai.txt",dtype=float)
+
+
+# In[4]:
+
+
+with open("other_materials_names.txt", "r") as textfile:
+    other_materials_names = textfile.readlines()
+textfile.close()
+iline=0;
+for line in other_materials_names:
+    other_materials_names[iline] = other_materials_names[iline].replace('\n', '')
+    iline += 1;
+
+
 # ## Air absorption functions, original
 
-# In[104]:
+# In[5]:
 
 
 #classical absorption, T in k
@@ -25,7 +50,7 @@ def classical(TKelvin, f):
   return 868.6*1.84e-11*math.pow(TKelvin/T0,1./2.)*f*f;
 
 
-# In[105]:
+# In[6]:
 
 
 #Nitrogen relaxation frequency
@@ -33,7 +58,7 @@ def FrN(TKelvin, h, P):
   return P/Patm*(9 + 280*h*math.exp(-4.17*(math.pow(TKelvin/T0,-1./3.) - 1)))*math.pow(TKelvin/T0,-1./2.);
 
 
-# In[106]:
+# In[7]:
 
 
 #Oxygen relaxation frequency
@@ -41,7 +66,7 @@ def FrO(h, P):
   return P/Patm*(24 + 4.04e4*h*(0.02+h)/(0.391+h));
 
 
-# In[107]:
+# In[8]:
 
 
 #Water vapour saturation pressure
@@ -49,24 +74,24 @@ def psat(TKelvin):
   return Patm*math.pow(10,-6.8346*math.pow(T01/TKelvin,1.261) + 4.6151);
 
 
-# In[108]:
+# In[9]:
 
 
 #Absolute humidity
 def habs(hrel, TKelvin, P):
-  return hrel*psat(T)/P;
+  return hrel*psat(TKelvin)/P;
 
 
-# In[109]:
+# In[10]:
 
 
 #Nitrogen absorption
 def Nit(TKelvin, h, P, f):
-  frn = FrN(T,h,P);
+  frn = FrN(TKelvin,h,P);
   return  868.6*0.1068*math.exp(-3352./TKelvin)*math.pow(TKelvin/T0,-5./2.)*frn * f*f/(frn*frn + f*f);
 
 
-# In[110]:
+# In[11]:
 
 
 #Oxygen absorption
@@ -75,7 +100,7 @@ def Oxyg(TKelvin, h, P, f):
   return  868.6*0.01275*math.exp(-2239.1/TKelvin)*math.pow(TKelvin/T0,-5./2.)*fro * f*f/(fro*fro+f*f);
 
 
-# In[111]:
+# In[12]:
 
 
 #Total air absorption, this function is not needed actually
@@ -85,7 +110,7 @@ def AlphaAir(TKelvin, h, P, f):
 
 # ## Seawater absorption functions, original
 
-# In[112]:
+# In[13]:
 
 
 #Sound speed in water
@@ -93,7 +118,7 @@ def csound(TCelsius, Salinity, Depth, pH):
   return 1412 + 3.21*TCelsius + 1.19*Salinity + 0.0167*Depth;
 
 
-# In[113]:
+# In[14]:
 
 
 #Water absorption frequency scale, to make formulas simpler, frequencies in kHz here
@@ -101,7 +126,7 @@ def FrW(TCelsius, Salinity, Depth, pH):
   return 1/(1 - 3.83e-5*Depth + 4.9e-10*Depth*Depth);
 
 
-# In[118]:
+# In[15]:
 
 
 #Boric acid relaxation frequency, frequencies in kHz here
@@ -110,7 +135,7 @@ def FrB(TCelsius, Salinity, Depth, pH):
   return 2.8*math.sqrt(Salinity/35)*pow(10,4-1245/TKelvin);
 
 
-# In[119]:
+# In[16]:
 
 
 #Magnesium sulphate relaxation frequency, frequencies in kHz here
@@ -119,7 +144,7 @@ def FrM(TCelsius, Salinity, Depth, pH):
   return 8.17*math.pow(10,8-1990/TKelvin)/(1 + 0.0018*(Salinity - 35));
 
 
-# In[120]:
+# In[17]:
 
 
 #Classical absorption in water, frequencies in kHz here
@@ -131,7 +156,7 @@ def Water(TCelsius, Salinity, Depth, pH, f):
   return cw*f*f/(frw*frw);
 
 
-# In[121]:
+# In[18]:
 
 
 #Magnesium sulphate absorption, frequencies in kHz here
@@ -141,7 +166,7 @@ def Magsulf(TCelsius, Salinity, Depth, pH, f):
   return 21.44*Salinity/c*(1+0.025*TCelsius)*(1-1.37e-4*Depth+ 6.2e-9*Depth*Depth)*frm*f*f/(frm*frm+f*f);
 
 
-# In[122]:
+# In[19]:
 
 
 #Boric acid absorption, frequencies in kHz here
@@ -151,7 +176,7 @@ def Boric(TCelsius, Salinity, Depth, pH, f):
   return (8.86/c)*math.pow(10,0.78*pH-5)*frb*f*f/(frb*frb+f*f);
 
 
-# In[123]:
+# In[20]:
 
 
 #Total water absorption, frequencies in kHz here
@@ -161,7 +186,7 @@ def AlphaWater(TCelsius, Salinity, Depth, pH, f):
 
 # ## Setup formula parameters for water and air
 
-# In[229]:
+# In[21]:
 
 
 #Global air parameters
@@ -177,7 +202,7 @@ a1w=-1; a2w=-1; a3w=-1; a4w=-1; a5w=-1
 water_setup = False;
 
 
-# In[278]:
+# In[22]:
 
 
 def setup_parameters_air(TKelvin, Humidity, Pressure):
@@ -246,7 +271,7 @@ def setup_parameters_air(TKelvin, Humidity, Pressure):
   print("Air setup done.");
 
 
-# In[308]:
+# In[23]:
 
 
 #Setup parameters for water formula
@@ -310,7 +335,7 @@ def setup_parameters_water(TCelsius, Salinity, Depth, pH):
 
 # ## Simplified formulas for water and air
 
-# In[232]:
+# In[24]:
 
 
 #Air absorption simple formula
@@ -324,7 +349,7 @@ def air_absorption(TKelvin, Humidity, Pressure, f):
   else:           return a5a*math.pow(f,n5a);
 
 
-# In[312]:
+# In[25]:
 
 
 #Water absorption simple formula
@@ -338,16 +363,39 @@ def water_absorption(TCelsius, Salinity, Depth, pH, f):
   else:           return a5w*math.pow(f,n5w);
 
 
-# ## Example plots for air and water
+# ## Simplified plots for other, construction related materials
 
-# In[313]:
-
-
-import matplotlib.pyplot as plt
-import numpy as np
+# In[26]:
 
 
-# In[314]:
+NMAT = len(other_materials_names) #number of materials
+NAI = 6 #len(other_materials_ai[1]) #number of a_i values for a given material
+
+frequenciesOtherMat = [125,250,500,1000,2000,4000]
+
+def AlphaOtherMaterial(f,nmat):
+  if(nmat<0 or nmat>=NMAT): return -9999;
+
+  irange = -1;
+  for ifr in range(NAI):
+    if(f<frequenciesOtherMat[ifr]):
+      irange=ifr;
+      break;
+  if(irange==-1): irange=NAI; #this means f larger than largest frequency point
+  if(irange==0): irange=1; #first range is up to 250
+  if(irange>NAI-2): irange=NAI-1; #/last range is from 2000
+    
+  n = math.log(other_materials_ai[nmat][irange]/other_materials_ai[nmat][irange-1]) / math.log(frequenciesOtherMat[irange]/frequenciesOtherMat[irange-1]);
+  c = other_materials_ai[nmat][irange]/math.pow(frequenciesOtherMat[irange],n);
+  
+  return c*math.pow(f,n);
+
+
+# ## Example plots
+
+# ### Air absorption
+
+# In[27]:
 
 
 TKelvin=293.15
@@ -366,7 +414,7 @@ for ifr in range(NFR):
   aorigtab[ifr]=AlphaAir(TKelvin,habs(Humidity,TKelvin,PPascal),PPascal,fr)
 
 
-# In[315]:
+# In[28]:
 
 
 plt.figure(num=None, figsize=(6, 4), dpi=100, facecolor='w', edgecolor='k')
@@ -380,7 +428,9 @@ plt.loglog(ftab, aorigtab, 'g-', label='original');
 plt.legend();
 
 
-# In[316]:
+# ### Water absorption
+
+# In[29]:
 
 
 TCelsius=8
@@ -396,7 +446,7 @@ for ifr in range(NFR):
   worigtab[ifr]=AlphaWater(TCelsius, Salinity, Depth, pH, fr/1000)
 
 
-# In[317]:
+# In[30]:
 
 
 plt.figure(num=None, figsize=(6, 4), dpi=100, facecolor='w', edgecolor='k')
@@ -407,6 +457,32 @@ plt.xlim(20,20000)
 plt.ylim(0.00001,10)
 plt.loglog(ftab, wsimptab, 'r--', label='approximation');
 plt.loglog(ftab, worigtab, 'g-', label='original');
+plt.legend();
+
+
+# ### Other materials
+
+# In[31]:
+
+
+nmat = 5; #"Smooth brickwork with flush pointing"
+aothertab=np.linspace(0,0,NFR);
+for ifr in range(NFR):
+  fr = ftab[ifr]
+  aothertab[ifr] = AlphaOtherMaterial(fr,nmat)
+
+
+# In[32]:
+
+
+plt.figure(num=None, figsize=(6, 4), dpi=100, facecolor='w', edgecolor='k')
+plt.title('Absorption in '+other_materials_names[nmat])
+plt.xlabel('f [Hz]');
+plt.ylabel('relative absorption');
+plt.xlim(20,20000)
+plt.ylim(0.001,1)
+plt.loglog(ftab, aothertab, 'r--', label='approximation');
+plt.loglog(frequenciesOtherMat, other_materials_ai[nmat], 'go', label='original');
 plt.legend();
 
 
