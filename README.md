@@ -37,7 +37,7 @@ It consists of codes of two kind:
 - [**other_materials_ai.txt**](https://github.com/csanadm/AbsorptionProject/blob/main/other_materials_ai.txt): Other material absorption data to be imported in **absorption_project.ipynb**
 - [**other_materials_names.txt**](https://github.com/csanadm/AbsorptionProject/blob/main/other_materials_names.txt): Other material names to be imported in **absorption_project.ipynb**
 
-## Example plots as results
+## Example plots as results, made with **plot_simple_example.cc**, using c++ and ROOT
 <a href="https://user-images.githubusercontent.com/38218165/176507425-b759cf40-c91b-4240-a446-2cc494a157e8.png">
   <img alt="Air approximation, T=20, H=30, P=1"
     src="https://user-images.githubusercontent.com/38218165/176507425-b759cf40-c91b-4240-a446-2cc494a157e8.png" width="300px"></a>
@@ -48,4 +48,18 @@ It consists of codes of two kind:
 <a href="https://user-images.githubusercontent.com/38218165/176507433-b36b1322-05da-4e93-8072-164c1932d61d.png">
   <img alt="Other materials, smooth brickwork with flush pointing"
     src="https://user-images.githubusercontent.com/38218165/176507433-b36b1322-05da-4e93-8072-164c1932d61d.png" width="300px">
+</a>
+
+## Example plots as results, made with **absorption_project.ipynb**, using Python
+<a href="https://user-images.githubusercontent.com/38218165/176926883-26c53256-d927-4ef3-ac0a-45d4a544d2d5.png">
+  <img alt="Air absorption plot with python"
+       src="https://user-images.githubusercontent.com/38218165/176926883-26c53256-d927-4ef3-ac0a-45d4a544d2d5.png" width="300px">
+</a>
+<a href="https://user-images.githubusercontent.com/38218165/176926882-18f566e1-3586-436c-8675-fed132bf0cdf.png">
+  <img alt="Water absorption plot with python"
+       src="https://user-images.githubusercontent.com/38218165/176926882-18f566e1-3586-436c-8675-fed132bf0cdf.png" width="300px">
+</a>
+<a href="https://user-images.githubusercontent.com/38218165/176926886-3b30cac2-4df2-4a89-8da1-a0084dd56340.png">
+  <img alt="Other material absorption plot with python"
+       src="https://user-images.githubusercontent.com/38218165/176926886-3b30cac2-4df2-4a89-8da1-a0084dd56340.png" width="300px">
 </a>
