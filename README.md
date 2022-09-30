@@ -33,7 +33,7 @@ It consists of codes of two kind:
 - [**nonroot_calculations_plotted.xlsx**](https://github.com/csanadm/AbsorptionProject/blob/main/nonroot_calculations_plotted.xlsx): Excel visualization of the output **plot_simple_example_noroot.out** 
 - [**absorption_project.ipynb**](https://github.com/csanadm/AbsorptionProject/blob/main/absorption_project.ipynb): Python calculations of water and air absorption as a Jupyter notebook 
 - [**absorption_project.html**](https://github.com/csanadm/AbsorptionProject/blob/main/absorption_project.html): HTML version of **absorption_project.ipynb**
-- [**absorption_project.py**](https://github.com/csanadm/AbsorptionProject/blob/main/absorption_project.html): Python executable script version of **absorption_project.ipynb**
+- [**absorption_project.py**](https://github.com/csanadm/AbsorptionProject/blob/main/absorption_project.py): Python executable script version of **absorption_project.ipynb**
 - [**other_materials_ai.txt**](https://github.com/csanadm/AbsorptionProject/blob/main/other_materials_ai.txt): Other material absorption data to be imported in **absorption_project.ipynb**
 - [**other_materials_names.txt**](https://github.com/csanadm/AbsorptionProject/blob/main/other_materials_names.txt): Other material names to be imported in **absorption_project.ipynb**
 
