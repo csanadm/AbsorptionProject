@@ -426,6 +426,7 @@ plt.ylim(0.001,100)
 plt.loglog(ftab, asimptab, 'r--', label='approximation');
 plt.loglog(ftab, aorigtab, 'g-', label='original');
 plt.legend();
+plt.savefig('air_absorption_python_plot.png');
 
 
 # ### Water absorption
@@ -458,6 +459,7 @@ plt.ylim(0.00001,10)
 plt.loglog(ftab, wsimptab, 'r--', label='approximation');
 plt.loglog(ftab, worigtab, 'g-', label='original');
 plt.legend();
+plt.savefig('water_absorption_python_plot.png');
 
 
 # ### Other materials
@@ -484,6 +486,7 @@ plt.ylim(0.001,1)
 plt.loglog(ftab, aothertab, 'r--', label='approximation');
 plt.loglog(frequenciesOtherMat, other_materials_ai[nmat], 'go', label='original');
 plt.legend();
+plt.savefig('other_absorption_python_plot.png');
 
 
 # In[ ]:
